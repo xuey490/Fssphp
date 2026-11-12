@@ -1,108 +1,95 @@
-![Static Badge](https://img.shields.io/badge/%3E%3Dphp-8.1-green)    ![Static Badge](https://img.shields.io/badge/MIT-License-blue)  ![Static Badge](https://img.shields.io/badge/Symfony_7-green)     [![zread](https://img.shields.io/badge/Ask_Zread-_.svg?style=flat-square&color=00b0aa&labelColor=000000&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuOTYxNTYgMS42MDAxSDIuMjQxNTZDMS44ODgxIDEuNjAwMSAxLjYwMTU2IDEuODg2NjQgMS42MDE1NiAyLjI0MDFWNC45NjAxQzEuNjAxNTYgNS4zMTM1NiAxLjg4ODEgNS42MDAxIDIuMjQxNTYgNS42MDAxSDQuOTYxNTZDNS4zMTUwMiA1LjYwMDEgNS42MDE1NiA1LjMxMzU2IDUuNjAxNTYgNC45NjAxVjIuMjQwMUM1LjYwMTU2IDEuODg2NjQgNS4zMTUwMiAxLjYwMDEgNC45NjE1NiAxLjYwMDFaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00Ljk2MTU2IDEwLjM5OTlIMi4yNDE1NkMxLjg4ODEgMTAuMzk5OSAxLjYwMTU2IDEwLjY4NjQgMS42MDE1NiAxMS4wMzk5VjEzLjc1OTlDMS42MDE1NiAxNC4xMTM0IDEuODg4MSAxNC4zOTk5IDIuMjQxNTYgMTQuMzk5OUg0Ljk2MTU2QzUuMzE1MDIgMTQuMzk5OSA1LjYwMTU2IDE0LjExMzQgNS42MDE1NiAxMy43NTk5VjExLjAzOTlDNS42MDE1NiAxMC42ODY0IDUuMzE1MDIgMTAuMzk5OSA0Ljk2MTU2IDEwLjM5OTlaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik0xMy43NTg0IDEuNjAwMUgxMS4wMzg0QzEwLjY4NSAxLjYwMDEgMTAuMzk4NCAxLjg4NjY0IDEwLjM5ODQgMi4yNDAxVjQuOTYwMUMxMC4zOTg0IDUuMzEzNTYgMTAuNjg1IDUuNjAwMSAxMS4wMzg0IDUuNjAwMUgxMy43NTg0QzE0LjExMTkgNS42MDAxIDE0LjM5ODQgNS4zMTM1NiAxNC4zOTg0IDQuOTYwMVYyLjI0MDFDMTQuMzk4NCAxLjg4NjY0IDE0LjExMTkgMS42MDAxIDEzLjc1ODQgMS42MDAxWiIgZmlsbD0iI2ZmZiIvPgo8cGF0aCBkPSJNNCAxMkwxMiA0TDQgMTJaIiBmaWxsPSIjZmZmIi8%2BCjxwYXRoIGQ9Ik00IDEyTDEyIDQiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4K&logoColor=ffffff)](https://zread.ai/xuey490/project)
+<p align="center">
+  <img src="logo.png" alt="FssPHP" width="420">
+</p>
 
+<h1 align="center">FssPHP</h1>
 
+<p align="center">
+  <strong>A lightweight, high-performance, secure PHP 8.3 framework</strong>
+</p>
 
-# FssPhp 框架
+<p align="center">
+  <a href="https://www.php.net/releases/8.3/"><img src="https://img.shields.io/badge/PHP-%5E8.3-777BB4?logo=php&logoColor=white" alt="PHP >= 8.3"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License"></a>
+  <a href="https://symfony.com/"><img src="https://img.shields.io/badge/Symfony-7.x-000000?logo=symfony&logoColor=white" alt="Symfony 7"></a>
+  <a href="https://www.workerman.net/"><img src="https://img.shields.io/badge/Workerman-5.x-orange" alt="Workerman 5"></a>
+  <a href="README.md">中文文档</a> ·
+  <a href="https://www.phpframe.org/">Website</a>
+</p>
 
-## Official Website: [https://www.phpframe.org/](https://www.phpframe.org/)
+FssPHP is a modern PHP framework whose kernel lives in `framework/`. It combines Symfony 7 components, a Workerman long-running runtime, and pieces of the ThinkPHP / Laravel ecosystems so the **same application code** can run under PHP-FPM, Workerman, or optional Swoole. This repository is both the framework and a reference project.
 
-Welcome to visit.
+## Features
 
-## Introduction:
+- Dual runtime: PHP-FPM and Workerman (HTTP, WebSocket, SSE, Redis queue). Optional Swoole entry (`swoole.php`).
+- Hybrid routing: Symfony `RouteCollection`, PHP 8 attributes (`#[Route]`, REST mappings), convention-based auto routes.
+- Symfony DI with a Laravel-style facade (`App::make()`, `app()`), property injection, and compiled container cache in production.
+- Dual ORM (`thinkORM` / `laravelORM`) and dual templates (Twig + ThinkTemplate).
+- Multi-app layout via `config/apps.php` (namespace, URL prefix, optional domain).
+- Onion middleware: CSRF, CORS, XSS, rate limit, IP block, Referer check, security headers.
+- Casbin RBAC, JWT (strong `JWT_SECRET` required), tenant context, plugins, PSR-14 events.
 
-FssPhp is a lightweight, powerful, fast, simple, and secure PHP framework. This project serves as the best practical example of using the FssPhp framework.
+## Requirements
 
-## User Documentation
+- PHP **8.3+** (Composer constraint `^8.3`)
+- Composer 2.x, MySQL 5.7+/8.x, Redis recommended
 
-[Zread.Ai](Zread.Ai) is highly recommended, and we would like to express our gratitude to them for providing project documentation analysis and generation services. For more details, please visit: [https://zread.ai/xuey490/project](https://zread.ai/xuey490/project)
+## Quick start
 
-## Core Features
+```bash
+git clone https://github.com/xuey490/project.git
+cd project
+composer install
+cp .env.example .env
+```
 
-🚀 Performance & Security
+Set a `JWT_SECRET` of at least 32 bytes. Database credentials are read from `config/database.php` (default engine: `laravelORM`).
 
-- Workerman Launcher: Utilizes Workerman, which is compatible with FPM launching. With the same coding approach, it delivers over 10 times the performance of traditional FPM.
+```bash
+# Built-in server
+php -S localhost:8000 -t public
 
-- Symfony Component Integration: Leverages Symfony 7.x components to implement HTTP fundamentals, routing, dependency injection, and caching.
+# Workerman
+php server.php start          # foreground
+php server.php start -d       # daemon
+```
 
-- Lightweight Design: Minimizes overhead and enables fast request processing.
+Open http://localhost:8000. Workerman also binds AI HTTP on `:8001` (`/api/ai/*`) and WebSocket on `:1234`. Health check: `GET /_health`.
 
-- Integrated Middleware: Includes middleware for CSRF protection, XSS filtering, rate limiting, and IP blocking.
+The hot-reload helper `watch.php` is gitignored and not shipped. Use `php server.php start` or the built-in server during development.
 
-- Routing Caching: Optimizes route loading through a file-based caching system, and supports middleware injection via annotated routes.
+## Architecture
 
-- Log Inspection: Features robust logging capabilities based on Monolog, with log sharding and segmentation.
+```text
+Request → Framework → Container / Kernel → Router → Middleware → Controller → Service → Dao
+```
 
-- Event Management: Allows full control over every detail of web development.
+| `framework/` module | Role |
+|---------------------|------|
+| Core | Bootstrap, Kernel, Router, `App` facade |
+| Container | Symfony DI wrapper, providers, prod dump |
+| Attributes | Route, Auth, Role, Permission, Validate, … |
+| Middleware | Dispatcher + built-in security stack |
+| Basic | Base Controller / Service / Dao + CRUD traits |
+| ORM / Repository | ThinkORM and Eloquent adapters |
+| Plugin / Tenant / Security | Plugins, multi-tenant, Casbin / CSRF |
+| Console | `php novaphp` generators and plugin commands |
 
-- 
+Routing priority: manual > attributes > plugin auto > app-prefix auto > domain auto > default namespace.
 
-🔧 Development Experience
+## CLI
 
-- Multiple Routing Options: Supports convention-based automatic routing, manual routing configuration, and attribute-based routing.
+```bash
+php novaphp make:controller User
+php novaphp make:model User
+php novaphp route:list
+php novaphp plugin:list
+```
 
-- Dependency Injection: Integrates a complete Symfony DI container for service management.
+## Docs
 
-- Template Flexibility: Offers dual template engine support (Twig and ThinkTemplate).
+Full Chinese README (canonical): [README.md](README.md). Module notes live under `framework/*/readme.md`. Site: [phpframe.org](https://www.phpframe.org/). AI-generated tour: [Zread](https://zread.ai/xuey490/project).
 
-- ORM Integration: Incorporates ThinkORM for database operations.
+## License
 
-- Data Validation: Employs ThinkValidate for powerful dataset validation.
-
-- Permission Control: Implements permission settings for routes based on PHP annotations and DOC Comment annotations.
-
-- 
-
-🛠️ Modern PHP Features
-
-- PHP 8.0+ Support: Takes advantage of modern PHP features, including attributes and union types.
-
-- PSR Standards: Complies with PSR-4 autoloading and other relevant standards.
-
-- Composer Ready: Adopts Composer for standard dependency management.
-
-## Code Quality Scan
-
-The code of this framework is highly standardized, with minimal redundancy and duplicate code. It is also suitable for beginners to learn and extend on their own.
-
-[
-
-## Download & Installation:
-
-### 1. Traditional Launch Mode
-
-- Local Environment Requirements: PHP 8.0 or above, Redis, MySQL 5.7, Composer 2.x or above.
-
-- Download the main version from GitHub, extract it to a local directory, and run the following command in the root directory:
-
-`composer install `
-
-- After the component packages are downloaded completely, open the CMD command line window and enter:
-
-`php -S localhost:8000 -t public`
-
-### 2. Workerman Launch Mode
-
-- Local Environment Requirements: PHP 8.0 or above, Redis, MySQL 5.7, Composer 2.x or above.
-
-- Download the main version from GitHub, extract it to a local directory, and run the following command in the root directory:
-
-`composer install `
-
-- After the component packages are downloaded completely, open the CMD command line window and enter:
-
-`php watch.php start `
-
-### 3. Access
-
-- Open a browser and enter the address: [http://localhost:8000](http://localhost:8000)
-
-- It can also be deployed to any Apache or Nginx server that supports PHP runtime.
-
-## Acknowledgments (Standing on the Shoulders of Giants to See Further)
-
-- Workerman: [https://www.workerman.net/](https://www.workerman.net/) (An open-source high-performance PHP application container)
-
-- Symfony: [https://www.symfony.com/](https://www.symfony.com/) (Known as the "Spring of the PHP World," serving as a foundational framework)
-
-- ThinkPHP: [https://thinkphp.cn/](https://thinkphp.cn/) (A top-tier PHP framework in the Chinese Internet ecosystem)
-> （注：文档部分内容可能由 AI 生成）
+[MIT](LICENSE) © 2025 blue2004 (`xuey863toy@gmail.com`) / xuey490
