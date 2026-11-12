@@ -43,7 +43,7 @@ composer install
 cp .env.example .env
 ```
 
-Set a `JWT_SECRET` of at least 32 bytes. Database credentials are read from `config/database.php` (default engine: `laravelORM`).
+Set a `JWT_SECRET` of at least 32 bytes in `.env`. Edit **`config/database.php`** for host, database, user, and password (default engine: `laravelORM`). `.env` `DB_*` / `ORM_DRIVER` are not wired into that file yet.
 
 ```bash
 # Built-in server

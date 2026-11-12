@@ -112,13 +112,13 @@ composer install
 cp .env.example .env
 ```
 
-编辑 `.env`：至少配置数据库，并设置 **长度 ≥ 32 字节** 的 `JWT_SECRET`（未设置或密钥过弱时 JWT 组件会拒绝启动）：
+编辑 `.env`，设置 **长度 ≥ 32 字节** 的 `JWT_SECRET`（未设置或密钥过弱时 JWT 组件会拒绝启动）：
 
 ```bash
 php -r "echo 'base64:'.base64_encode(random_bytes(48)), PHP_EOL;"
 ```
 
-数据库连接以 `config/database.php` 为准（当前默认 ORM 为 `laravelORM`）。导入 `database/sql/` 下的初始化脚本，或按项目迁移流程执行 `database/migrate.php`。
+数据库账号、库名、主机写在 **`config/database.php`**（当前默认 ORM 为 `laravelORM`，连接默认为 `127.0.0.1` / `fssoa` / `root`）。`.env` 里的 `DB_*`、`ORM_DRIVER` **尚未接到该文件**，改环境变量不会改变实际连接。导入 `database/sql/` 下的初始化脚本，或按项目迁移流程执行 `database/migrate.php`。
 
 ### PHP 内置服务器（开发）
 
@@ -359,8 +359,7 @@ php novaphp plugin:market search keyword
 |------|------|
 | `APP_ENV` / `APP_DEBUG` | 环境与调试 |
 | `APP_URL` | 对外根地址 |
-| `ORM_DRIVER` | `thinkORM` 或 `laravelORM`（实际切换以 `config/database.php` 的 `engine` 为准） |
-| `DB_*` | 数据库（请同时核对 `config/database.php` 连接字段） |
+| `ORM_DRIVER` / `DB_*` | 出现在 `.env.example` 中，**当前未写入** `config/database.php`；ORM 引擎与连接请直接改该文件（`engine`、`hostname`、`database`、`username`、`password`） |
 | `SESSION_STORAGE` | `redis` / `file` 等 |
 | `CACHE_DRIVER` | 缓存驱动 |
 | `JWT_SECRET` | **必填**，≥ 32 字节随机密钥 |
